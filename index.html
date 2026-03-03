@@ -31,10 +31,7 @@
     /* ── SPLASH ── */
     #splash {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      height: 100dvh;
+      top: 0; left: 0; right: 0; bottom: 0;
       z-index: 9999;
       background: #000;
       overflow: hidden;
@@ -44,14 +41,9 @@
 
     #splash video {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
-      width: 100vw;
-      height: 100vh;
-      height: 100dvh;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center center;
     }
@@ -494,84 +486,174 @@
        RESPONSIVE — MOBILE (max 600px)
     ══════════════════════════════════════ */
     @media (max-width: 600px) {
-      /* iOS background-attachment:fixed fix */
+
+      html, body {
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      /* iOS Safari: disable fixed background which breaks layout */
       #main {
-        background-attachment: scroll;
-        -webkit-background-attachment: scroll;
-        background-size: cover;
-      }
-      #main::before {
-        position: fixed;
-        -webkit-transform: translateZ(0);
+        background-attachment: scroll !important;
+        -webkit-background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
       }
 
-      /* Prevent horizontal overflow on iPhone */
-      html, body { overflow-x: hidden; max-width: 100vw; }
-
+      /* Hero */
       #hero {
         min-height: 100vh;
-        min-height: 100dvh;
-        padding: 80px 18px 50px;
+        padding: 60px 16px 40px;
+        gap: 0;
       }
-      .bismillah { font-size: 13px; letter-spacing: 0.18em; margin-bottom: 16px; }
-      .divider-ornament { margin: 10px auto; }
-      .divider-ornament span { width: 50px; }
-      .you-are-invited { font-size: 9px; letter-spacing: 0.28em; }
-      .event-name { font-size: clamp(38px, 13vw, 60px); word-break: break-word; }
-      .event-subtitle { font-size: 15px; }
 
-      /* Names: stack vertically */
-      .couple-names { flex-direction: column; gap: 6px; margin-top: 24px; align-items: center; width: 100%; }
-      .groom-block, .bride-block { width: 100%; }
-      .partner-name { font-size: clamp(26px, 8vw, 38px); }
-      .partner-lineage { font-size: 11px; }
-      .ampersand-divider { font-size: clamp(32px, 10vw, 48px); padding-bottom: 0; line-height: 1.1; }
+      .bismillah {
+        font-size: 11px;
+        letter-spacing: 0.15em;
+        margin-bottom: 12px;
+      }
 
-      /* Hero detail blocks: stack vertically */
+      .divider-ornament { margin: 8px auto; }
+      .divider-ornament span { width: 40px; }
+
+      .you-are-invited {
+        font-size: 8px;
+        letter-spacing: 0.18em;
+        padding: 0 8px;
+        line-height: 1.8;
+      }
+
+      .event-name {
+        font-size: clamp(36px, 12vw, 54px);
+        letter-spacing: 0.02em;
+      }
+
+      .event-subtitle {
+        font-size: 14px;
+        margin-top: 6px;
+      }
+
+      /* Stack couple names vertically */
+      .couple-names {
+        flex-direction: column !important;
+        gap: 4px !important;
+        margin-top: 20px;
+        align-items: center;
+        width: 100%;
+      }
+      .groom-block, .bride-block {
+        width: 100%;
+        text-align: center;
+      }
+      .partner-name {
+        font-size: clamp(24px, 7.5vw, 36px);
+      }
+      .partner-lineage {
+        font-size: 11px;
+        line-height: 1.5;
+      }
+      .ampersand-divider {
+        font-size: clamp(28px, 9vw, 44px);
+        padding-bottom: 0;
+        line-height: 1.2;
+      }
+
+      /* Stack hero detail blocks vertically */
       .hero-details {
-        flex-direction: column; gap: 0; margin-top: 28px;
-        width: 100%; max-width: 320px;
+        flex-direction: column !important;
+        gap: 0 !important;
+        margin-top: 20px;
+        width: 90%;
+        max-width: 300px;
         border: 1px solid rgba(201,168,76,0.2);
-        border-radius: 6px; overflow: hidden;
-        background: rgba(58,9,16,0.4);
+        border-radius: 6px;
+        overflow: hidden;
+        background: rgba(58,9,16,0.45);
       }
-      .hero-detail-block { padding: 16px 20px; position: relative; }
-      .hero-detail-block:not(:last-child) { border-bottom: 1px solid rgba(201,168,76,0.15); }
-      .hero-detail-block .value { font-size: 20px; }
+      .hero-detail-block {
+        padding: 14px 18px;
+        width: 100%;
+      }
+      .hero-detail-block:not(:last-child) {
+        border-bottom: 1px solid rgba(201,168,76,0.15);
+      }
+      .hero-detail-block::after { display: none !important; }
+      .hero-detail-block .label { font-size: 9px; }
+      .hero-detail-block .value { font-size: 18px; }
 
-      /* Timeline: single left-aligned column */
-      .timeline::before { left: 18px; transform: translateX(-50%); }
+      /* Section headings */
+      .section-title {
+        font-size: clamp(17px, 5vw, 24px) !important;
+        left: 0 !important;
+        transform: none !important;
+        display: block !important;
+        text-align: center !important;
+      }
+      .section-sub {
+        font-size: 14px;
+        margin-bottom: 28px;
+      }
+      .section-wrapper { padding: 44px 14px; }
+
+      /* Timeline: full single column */
+      .timeline::before {
+        left: 14px !important;
+        transform: translateX(-50%) !important;
+      }
       .timeline-item,
-      .timeline-item:nth-child(odd) { flex-direction: row; text-align: left; padding-left: 48px; }
-      .timeline-dot { left: 18px; }
-      .timeline-content { width: 100%; padding: 16px 18px; }
-      .timeline-title { font-size: 18px; }
-      .timeline-desc { font-size: 12px; }
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        flex-direction: row !important;
+        text-align: left !important;
+        padding-left: 40px !important;
+      }
+      .timeline-dot {
+        left: 14px !important;
+        transform: translateX(-50%) !important;
+        width: 12px;
+        height: 12px;
+      }
+      .timeline-content {
+        width: 100% !important;
+        padding: 14px 14px;
+      }
+      .timeline-title { font-size: 17px; }
+      .timeline-desc  { font-size: 12px; line-height: 1.6; }
+      .timeline-time  { font-size: 10px; }
 
       /* Venue */
-      .venue-card { padding: 24px 16px; }
-      .venue-address { font-size: 15px; margin-bottom: 18px; }
-      .map-embed { height: 210px; }
+      .venue-card { padding: 20px 14px; }
+      .venue-name { font-size: clamp(17px, 5vw, 22px); }
+      .venue-address { font-size: 14px; margin-bottom: 16px; }
+      .map-embed { height: 200px; }
       .btn-directions {
-        padding: 13px 24px; font-size: 10px; letter-spacing: 0.25em;
-        width: 100%; display: block; text-align: center;
-        -webkit-tap-highlight-color: transparent;
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 13px 16px;
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        box-sizing: border-box;
       }
 
-      .section-title { font-size: clamp(18px, 5.5vw, 26px); }
-      .section-sub { font-size: 15px; margin-bottom: 32px; }
-      .section-wrapper { padding: 50px 16px; }
-      footer { padding: 24px 16px 48px; font-size: 10px; letter-spacing: 0.15em; line-height: 1.9; }
+      /* Footer */
+      footer {
+        padding: 20px 14px 44px;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        line-height: 2;
+      }
     }
 
     /* ══════════════════════════════════════
        RESPONSIVE — VERY SMALL (max 380px)
     ══════════════════════════════════════ */
     @media (max-width: 380px) {
-      .event-name { font-size: 36px; }
-      .partner-name { font-size: 24px; }
-      .hero-detail-block .value { font-size: 17px; }
-      .timeline-title { font-size: 16px; }
+      .event-name    { font-size: 32px; }
+      .partner-name  { font-size: 22px; }
+      .hero-detail-block .value { font-size: 16px; }
+      .timeline-title { font-size: 15px; }
+      .you-are-invited { font-size: 7.5px; }
     }
   </style>
 </head>
