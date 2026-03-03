@@ -321,17 +321,6 @@
       font-weight: 300;
     }
 
-    @media (max-width: 620px) {
-      .timeline::before { left: 20px; }
-      .timeline-item, .timeline-item:nth-child(odd) {
-        flex-direction: row;
-        text-align: left;
-        padding-left: 52px;
-      }
-      .timeline-dot { left: 20px; }
-      .timeline-content { width: 100%; }
-    }
-
     /* ── VENUE CARD ── */
     .venue-card {
       background: rgba(58,9,16,0.55);
@@ -480,6 +469,64 @@
       transition: opacity 0.9s ease, transform 0.9s ease;
     }
     .reveal.visible { opacity: 1; transform: none; }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — TABLET (max 768px)
+    ══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      #hero { padding: 70px 20px 50px; }
+      .section-wrapper { padding: 60px 20px; }
+      .venue-card { padding: 28px 20px; }
+      .hero-details { gap: 24px; }
+      .section-sub { font-size: 16px; margin-bottom: 36px; }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — MOBILE (max 600px)
+    ══════════════════════════════════════ */
+    @media (max-width: 600px) {
+      #main { background-attachment: scroll; }
+      #hero { min-height: 100svh; padding: 80px 18px 50px; }
+      .bismillah { font-size: 13px; letter-spacing: 0.18em; margin-bottom: 16px; }
+      .divider-ornament { margin: 10px auto; }
+      .divider-ornament span { width: 50px; }
+      .you-are-invited { font-size: 9px; letter-spacing: 0.28em; }
+      .event-name { font-size: clamp(44px, 15vw, 64px); }
+      .event-subtitle { font-size: 15px; }
+      .couple-names { flex-direction: column; gap: 6px; margin-top: 24px; align-items: center; }
+      .groom-block, .bride-block { width: 100%; }
+      .partner-name { font-size: clamp(28px, 9vw, 40px); }
+      .partner-lineage { font-size: 12px; }
+      .ampersand-divider { font-size: clamp(34px, 10vw, 50px); padding-bottom: 0; line-height: 1.1; }
+      .hero-details { flex-direction: column; gap: 0; margin-top: 28px; width: 100%; max-width: 320px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; overflow: hidden; background: rgba(58,9,16,0.4); }
+      .hero-detail-block { padding: 16px 20px; position: relative; }
+      .hero-detail-block:not(:last-child) { border-bottom: 1px solid rgba(201,168,76,0.15); }
+      .hero-detail-block .value { font-size: 20px; }
+      .timeline::before { left: 18px; transform: translateX(-50%); }
+      .timeline-item, .timeline-item:nth-child(odd) { flex-direction: row; text-align: left; padding-left: 48px; }
+      .timeline-dot { left: 18px; }
+      .timeline-content { width: 100%; padding: 16px 18px; }
+      .timeline-title { font-size: 18px; }
+      .timeline-desc { font-size: 12px; }
+      .venue-card { padding: 24px 16px; }
+      .venue-address { font-size: 15px; margin-bottom: 18px; }
+      .map-embed { height: 210px; }
+      .btn-directions { padding: 13px 24px; font-size: 10px; letter-spacing: 0.25em; width: 100%; display: block; text-align: center; }
+      .section-title { font-size: clamp(18px, 5.5vw, 26px); }
+      .section-sub { font-size: 15px; margin-bottom: 32px; }
+      .section-wrapper { padding: 50px 16px; }
+      footer { padding: 24px 16px 48px; font-size: 10px; letter-spacing: 0.15em; line-height: 1.9; }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — VERY SMALL (max 380px)
+    ══════════════════════════════════════ */
+    @media (max-width: 380px) {
+      .event-name { font-size: 40px; }
+      .partner-name { font-size: 26px; }
+      .hero-detail-block .value { font-size: 17px; }
+      .timeline-title { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -507,20 +554,22 @@
         <span></span><i>✦</i><span></span>
       </div>
 
-      <p class="you-are-invited">You are cordially invited to the</p>
+      <p class="you-are-invited">Mrs. Syed Anwer Munir Hussan cordially invites you to the Shendi of her granddaughter</p>
 
       <h1 class="event-name">Shendi</h1>
       <p class="event-subtitle">A Celebration of Love &amp; Union</p>
 
       <div class="couple-names">
-        <div class="groom-block">
-          <div class="partner-name">Sajeel</div>
-          <div class="partner-lineage">S/o Aliya &amp; Mohsin Wasti</div>
-        </div>
-        <div class="ampersand-divider">&amp;</div>
         <div class="bride-block">
           <div class="partner-name">Aleena</div>
-          <div class="partner-lineage">D/o Asmara &amp; Ammad Hussain</div>
+          <div class="partner-lineage">Syed Aleena Ammad Hussain</div>
+          <div class="partner-lineage">D/o Syed Ammad Hussain &amp; Syed Asmara Munir</div>
+        </div>
+        <div class="ampersand-divider">&amp;</div>
+        <div class="groom-block">
+          <div class="partner-name">Sajeel</div>
+          <div class="partner-lineage">Syed Sajeel Mohsin Wasti</div>
+          <div class="partner-lineage">S/o Syed Mohsin Ali Wasti &amp; Syed Aliya Mohsin Wasti</div>
         </div>
       </div>
 
@@ -553,7 +602,7 @@
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <div class="timeline-time">6:00 PM</div>
-              <div class="timeline-title">Arrival & Welcome</div>
+              <div class="timeline-title">Arrival</div>
               <div class="timeline-desc">Guests are warmly welcomed with refreshments, florals, and a chance to settle into the celebration.</div>
             </div>
           </div>
@@ -561,17 +610,8 @@
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-              <div class="timeline-time">6:30 PM</div>
-              <div class="timeline-title">Mayun & Mehndi Ceremony</div>
-              <div class="timeline-desc">Traditional henna application with music and laughter — the heart of the Shendi evening.</div>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
               <div class="timeline-time">7:30 PM</div>
-              <div class="timeline-title">Grand Dinner</div>
+              <div class="timeline-title">Dinner</div>
               <div class="timeline-desc">A lavish spread of traditional and contemporary cuisine served in celebratory style.</div>
             </div>
           </div>
@@ -579,18 +619,9 @@
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-              <div class="timeline-time">8:30 PM</div>
-              <div class="timeline-title">Music & Dance</div>
-              <div class="timeline-desc">Live dhol, choreographed performances, and open floor celebrations fill the hall with joy.</div>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
               <div class="timeline-time">9:30 PM</div>
-              <div class="timeline-title">Dessert & Farewell</div>
-              <div class="timeline-desc">Sweet endings with mithai, cake, and heartfelt goodbyes as the evening draws to a close.</div>
+              <div class="timeline-title">Rukhsati</div>
+              <div class="timeline-desc">A heartfelt farewell as the bride begins her beautiful new journey.</div>
             </div>
           </div>
 
@@ -605,7 +636,7 @@
         <p class="section-sub reveal">Find us here on the night</p>
         <div class="venue-card reveal">
           <div class="venue-name">Le Aura Grand</div>
-          <div class="venue-address">Lahore, Pakistan</div>
+          <div class="venue-address">Pine Avenue, Lahore</div>
           <iframe
             class="map-embed"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108890.87!2d74.3290!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDMxJzEzLjQiTiA3NMKwMTknNDQuNCJF!5e0!3m2!1sen!2s!4v1680000000000"
@@ -615,7 +646,7 @@
           </iframe>
           <br />
           <a
-            href="https://www.google.com/maps/search/Le+Aura+Grand+Lahore"
+            href="https://www.google.com/maps/search/Le+Aura+Grand+Pine+Avenue+Lahore"
             target="_blank"
             class="btn-directions">
             Get Directions
@@ -624,14 +655,12 @@
       </div>
     </section>
 
-    
-    </section>
-
     <footer>
       <div class="divider-ornament" style="margin-bottom:16px; opacity:0.5;">
         <span style="width:40px"></span><i>✦</i><span style="width:40px"></span>
       </div>
-      With love &amp; blessings · Shendi 2026
+      Looking forward to celebrating with you<br/>
+      Mr. &amp; Mrs. Ammad Hussain &nbsp;·&nbsp; Mr. &amp; Mrs. Amir Ayub
     </footer>
 
   </div><!-- /main -->
